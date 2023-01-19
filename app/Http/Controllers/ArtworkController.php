@@ -26,7 +26,7 @@ class ArtworkController extends Controller
      */
     public function create()
     {
-        //
+        return view('artworks.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class ArtworkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        $new_artwork = new Artwork();
+        $form_data['slug'] = Artwork::generateSlug(($form_data['name']));
+        $new_artwork->fill($form_data);
+        $new_artwork->save();
+
+        return redirect()->route('artworks.show', $new_artwork)->with('message', 'New aertwork correctly created');
     }
 
     /**
@@ -46,9 +53,11 @@ class ArtworkController extends Controller
      * @param  \App\Models\Artwork  $artwork
      * @return \Illuminate\Http\Response
      */
-    public function show(Artwork $artwork)
+    public function show($id)
     {
-        //
+        $artwork = Artwork::findOrFail($id);
+
+        return view('artworks.show', compact('artwork'));
     }
 
     /**

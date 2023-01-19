@@ -7,6 +7,7 @@
 @section('content')
   <div class="container">
     <h1 class="my-5">Artworks list</h1>
+    <a class="btn btn-primary" href="{{ route('artworks.create') }}">Add new artwork</a>
 
     <table class="table table-striped mt-4">
       <thead>
@@ -32,13 +33,13 @@
             <td>{{ $artwork->artist_id }}</td>
             <td>{{ $artwork->museum_id }}</td>
             <td>
-              {{-- <a href="#" class="btn btn-primary">
-                <i class="fa-regular fa-eye"></i>
+              <a href="{{ route('artworks.show', $artwork) }}" class="btn btn-primary">
+                <i class="fa-regular fa-eye">Show</i>
               </a>
               <a href="#" class="btn btn-warning mx-2">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </a> --}}
-              {{-- @include('admin.partials.form-delete', ['project' => $artwork]) --}}
+                <i class="fa-solid fa-pen-to-square">Edit</i>
+              </a>
+              {{-- @include('admin.partials.form-delete', ['artwork' => $artwork]) --}}
             </td>
           </tr>
         @empty
