@@ -10,7 +10,7 @@
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nome artista</label>
-                <input type="text" class="form-control" id="name" placeholder="Inserisci il nome...">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Inserisci il nome...">
             </div>
 
             <button type="submit" class="btn btn-primary">Aggiungi</button>
