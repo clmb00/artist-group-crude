@@ -35,7 +35,7 @@ class ArtistsController extends Controller
      * @param  \App\Http\Requests\StoreArtistsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreArtistsRequest $request)
+    public function store(Request $request)
     {
         // $form_data = $request->all();
 
