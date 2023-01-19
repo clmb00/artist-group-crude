@@ -22,8 +22,14 @@
                     <td>{{ $museum->id }}</td>
                     <td>{{ $museum->name }}</td>
                     <td>{{ $museum->nation }}</td>
-                    <td>
+                    <td class="d-flex">
                         <a class="btn btn-primary" href="{{ route('museums.show', $museum) }}">Show</a>
+                        <a class="btn btn-warning" href="{{ route('museums.edit', $museum) }}">Edit</a>
+                        <form action="{{ route('museums.destroy', $museum) }}" method="POST" onsubmit="return confirm('Confermi leliminazione?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @empty
