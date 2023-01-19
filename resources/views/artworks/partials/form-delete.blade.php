@@ -4,6 +4,6 @@
   @method('DELETE')
 
   <button type="submit" class="btn btn-danger" title="delete">
-    <i class="fa-solid fa-trash"></i>
+    <i class="fa-solid fa-trash">Delete</i>
   </button>
 </form>
