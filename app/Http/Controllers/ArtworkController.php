@@ -80,7 +80,17 @@ class ArtworkController extends Controller
      */
     public function update(Request $request, Artwork $artwork)
     {
-        //
+        $form_data = $request->all();
+
+        if($form_data['name'] != $artwork->name){
+            $form_data['slug'] = Artwork::generateSlug($form_data['name']);
+        }else{
+            $form_data['slug'] = $artwork->slug;
+        }
+
+        $artwork->update($form_data);
+
+        return redirect()->route('artworks.show', $artwork)->with('message', 'Project correctly updated');
     }
 
     /**
