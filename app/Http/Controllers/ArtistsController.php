@@ -15,7 +15,8 @@ class ArtistsController extends Controller
      */
     public function index()
     {
-        //
+        $artists = Artists::all();
+        return view('artists.index', compact('artists'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ArtistsController extends Controller
      */
     public function create()
     {
-        //
+        return view('artists.create');
     }
 
     /**
@@ -36,7 +37,26 @@ class ArtistsController extends Controller
      */
     public function store(StoreArtistsRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $new_artist = new Artists();
+
+
+
+        $form_data['slug'] = Artists::generateSlug($form_data['name']);
+
+        $new_artist->fill($form_data);
+
+
+        $new_artist->save();
+
+        //$new_artist = new Artists();
+
+        //$form_data['slug'] = Artists::generateSlug($form_data['name']);
+
+        $new_artist = Artists::create($form_data);
+
+        return redirect()->route('artists.show', $new_artist);
     }
 
     /**
@@ -45,9 +65,9 @@ class ArtistsController extends Controller
      * @param  \App\Models\Artists  $artists
      * @return \Illuminate\Http\Response
      */
-    public function show(Artists $artists)
+    public function show(Artists $artist)
     {
-        //
+        return view('artists.show', compact('artist'));
     }
 
     /**
