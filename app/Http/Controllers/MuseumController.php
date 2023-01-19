@@ -14,7 +14,9 @@ class MuseumController extends Controller
      */
     public function index()
     {
-        //
+        $museums = Museum::all();
+
+        return view('museum.index', compact('museums'));
     }
 
     /**
@@ -24,7 +26,7 @@ class MuseumController extends Controller
      */
     public function create()
     {
-        //
+        return view('museum.create');
     }
 
     /**
@@ -35,7 +37,12 @@ class MuseumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        $form_data['slug'] = Museum::generate_slug($form_data['name']);
+
+        $new_museum = Museum::create($form_data);
+
+        return redirect(route('museums.show', $new_museum));
     }
 
     /**
@@ -46,7 +53,7 @@ class MuseumController extends Controller
      */
     public function show(Museum $museum)
     {
-        //
+        return view('museum.show', compact('museum'));
     }
 
     /**
@@ -57,7 +64,7 @@ class MuseumController extends Controller
      */
     public function edit(Museum $museum)
     {
-        //
+        return view('museum.edit', compact('museum'));
     }
 
     /**
@@ -69,7 +76,17 @@ class MuseumController extends Controller
      */
     public function update(Request $request, Museum $museum)
     {
-        //
+        $form_data = $request->all();
+
+        if($form_data['name'] != $museum->name){
+            $form_data['slug'] = Museum::generate_slug($form_data['name']);
+        } else {
+            $form_data['slug'] = $museum->slug;
+        }
+
+        $museum->update($form_data);
+
+        return view('museum.show', compact('museum'));
     }
 
     /**
@@ -80,6 +97,8 @@ class MuseumController extends Controller
      */
     public function destroy(Museum $museum)
     {
-        //
+        $museum->delete();
+
+        return redirect(route('museums.index'));
     }
 }
