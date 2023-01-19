@@ -10,6 +10,8 @@ class Artwork extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'artist_id', 'museum_id', 'slug', 'year'];
+
     public static function generateSlug($string){
         $slug = Str::slug($string, '-');
 

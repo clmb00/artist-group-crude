@@ -36,7 +36,7 @@
               <a href="{{ route('artworks.show', $artwork) }}" class="btn btn-primary">
                 <i class="fa-regular fa-eye">Show</i>
               </a>
-              <a href="#" class="btn btn-warning mx-2">
+              <a href="{{ route('artworks.edit', $artwork) }}" class="btn btn-warning mx-2">
                 <i class="fa-solid fa-pen-to-square">Edit</i>
               </a>
               {{-- @include('admin.partials.form-delete', ['artwork' => $artwork]) --}}
