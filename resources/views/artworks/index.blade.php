@@ -39,7 +39,7 @@
               <a href="{{ route('artworks.edit', $artwork) }}" class="btn btn-warning mx-2">
                 <i class="fa-solid fa-pen-to-square">Edit</i>
               </a>
-              {{-- @include('admin.partials.form-delete', ['artwork' => $artwork]) --}}
+              @include('artworks.partials.form-delete', ['artwork' => $artwork])
             </td>
           </tr>
         @empty

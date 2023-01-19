@@ -101,6 +101,8 @@ class ArtworkController extends Controller
      */
     public function destroy(Artwork $artwork)
     {
-        //
+        $artwork->delete();
+
+        return redirect()->route('artworks.index')->with('deleted', "Artwork $artwork->name was deleted" );
     }
 }
