@@ -37,15 +37,20 @@ class ArtistsController extends Controller
      */
     public function store(StoreArtistsRequest $request)
     {
+        // $form_data = $request->all();
+
+        // $new_artist = new Artists();
+
+        // $form_data['slug'] = Artists::generateSlug($form_data['name']);
+
+        // $new_artist->fill($form_data);
+
+        // $new_artist->save();
+
         $form_data = $request->all();
-
-        $new_artist = new Artists();
-
         $form_data['slug'] = Artists::generateSlug($form_data['name']);
 
-        $new_artist->fill($form_data);
-
-        $new_artist->save();
+        $new_artist = Artists::create($form_data);
 
         //$new_artist = new Artists();
 
