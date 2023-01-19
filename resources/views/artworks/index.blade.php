@@ -48,6 +48,6 @@
       </tbody>
     </table>
 
-    {{-- {{ $artwokrs->links() }} --}}
+    {{ $artworks->links() }}
   </div>
 @endsection

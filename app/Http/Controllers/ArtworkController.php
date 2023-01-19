@@ -14,7 +14,7 @@ class ArtworkController extends Controller
      */
     public function index()
     {
-        $artworks = Artwork::all();
+        $artworks = Artwork::paginate(5);
         return view('artworks.index', compact('artworks'));
 
     }
