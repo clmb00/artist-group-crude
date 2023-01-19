@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArtistsController;
+use App\Http\Controllers\ArtworkController;
+use App\Http\Controllers\MuseumController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('museums', MuseumController::class);
+Route::resource('artists', ArtistsController::class);
+Route::resource('artworks', ArtworkController::class);
