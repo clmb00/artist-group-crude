@@ -44,7 +44,7 @@ class ArtworkController extends Controller
         $new_artwork->fill($form_data);
         $new_artwork->save();
 
-        return redirect()->route('artworks.show', $new_artwork)->with('message', 'New aertwork correctly created');
+        return redirect()->route('artworks.show', $new_artwork)->with('message', 'New artwork correctly created');
     }
 
     /**
@@ -90,7 +90,7 @@ class ArtworkController extends Controller
 
         $artwork->update($form_data);
 
-        return redirect()->route('artworks.show', $artwork)->with('message', 'Project correctly updated');
+        return redirect()->route('artworks.show', $artwork)->with('message', 'Artwork correctly updated');
     }
 
     /**
