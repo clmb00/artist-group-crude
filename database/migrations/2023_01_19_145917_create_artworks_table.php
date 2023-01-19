@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('artworks', function (Blueprint $table) {
             $table->id();
+            $table->float('artists_id')->nullable();
+            $table->float('museum_id')->nullable();
+            $table->string('name', 150);
+            $table->string('slug')->unique();
+            $table->float('year');
             $table->timestamps();
         });
     }
