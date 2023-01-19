@@ -10,6 +10,7 @@ class Museum extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'nation', 'slug'];
 
     public static function generate_slug($string){
         $slug = Str::slug($string, '-');
