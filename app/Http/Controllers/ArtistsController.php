@@ -41,12 +41,9 @@ class ArtistsController extends Controller
 
         $new_artist = new Artists();
 
-
-
         $form_data['slug'] = Artists::generateSlug($form_data['name']);
 
         $new_artist->fill($form_data);
-
 
         $new_artist->save();
 
@@ -54,7 +51,7 @@ class ArtistsController extends Controller
 
         //$form_data['slug'] = Artists::generateSlug($form_data['name']);
 
-        $new_artist = Artists::create($form_data);
+        //$new_artist = Artists::create($form_data);
 
         return redirect()->route('artists.show', $new_artist);
     }
